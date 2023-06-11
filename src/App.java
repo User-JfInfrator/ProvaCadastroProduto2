@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Scanner;
@@ -94,21 +95,28 @@ public class App {
             System.out.println("Digite a segunda data: " + "| Formato: dd/MM/yyyy");
             String segundaDt = sc.next();
 
-            DoubleSummaryStatistics valores = listaProduto.stream()
-            .filter(p -> p instanceof Produto)
-            .collect(Collectors.summarizingDouble(Produto::getValor));
-
+            
+            double valorTotal = 0.0;
+            double valorMedio = 0.0;
+            int quantidadeVendas = 0;
             LocalDate primeiraData = LocalDate.parse(primeiraDt, df);
             LocalDate segundaData = LocalDate.parse(segundaDt, df);
+            
 
             for (Venda venda : listaVendas) {
                 if(venda.getDataDaVenda().isAfter(primeiraData) && venda.getDataDaVenda().isBefore(segundaData));{
                     System.out.println(venda);
+                    valorTotal = venda.getProdutoVendido().getValor() * venda.getqtdVendida();
+                    valorMedio += valorTotal;
+                    quantidadeVendas++;
+                    System.out.println("- Valor total da venda: " + valorTotal);
                 }   
             }
 
-            System.out.println("\n- Valor médio das vendas: " + valores.getAverage());
-            System.out.println("- Valor total das vendas: " + valores.getSum() + "\n");
+            double mediaVendas = valorMedio / quantidadeVendas;
+
+            System.out.println("\n- Valor médio das vendas: " + mediaVendas);
+            
             
         }
            
@@ -142,12 +150,12 @@ public class App {
                 listaVendas.sort(Comparator.comparing(s -> s .getDataDaVenda()));
                 produto.setQtdEstoque(produto.getQtdEstoque() - qtdVenda);
                 System.out.println("\n **Venda Realizada** \n");
-        }
+         }
                 
-            }
+     }
 
          
-        }
+}
 
     }while(opcao!=0);
 
