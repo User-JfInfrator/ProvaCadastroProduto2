@@ -1,6 +1,8 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Venda {
+    DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private LocalDate dataDaVenda;
     private Produto produtoVendido;
@@ -15,7 +17,7 @@ public class Venda {
 
     @Override
     public String toString() {
-        return String.format("\n\n* Data: %s *\n \n**Produto Vendido**\n %s- Quantidade vendida: %d\n",dataDaVenda,produtoVendido,qtdVendida);
+        return String.format("\n\n* Data: %s *\n \n**Produto Vendido**\n %s- Quantidade vendida: %d\n",dataDaVenda.format(df),produtoVendido,qtdVendida);
     }
 
     public LocalDate getDataDaVenda() {
