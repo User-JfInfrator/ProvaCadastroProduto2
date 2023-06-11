@@ -104,12 +104,11 @@ public class App {
             for (Venda venda : listaVendas) {
                 if(venda.getDataDaVenda().isAfter(primeiraData) && venda.getDataDaVenda().isBefore(segundaData));{
                     System.out.println(venda);
-                }
+                }   
+            }
 
             System.out.println("\n- Valor médio das vendas: " + valores.getAverage());
-            System.out.println("- Valor total das vendas: " + valores.getSum() + "\n");   
-            }
-          
+            System.out.println("- Valor total das vendas: " + valores.getSum() + "\n");
             
         }
            
