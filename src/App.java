@@ -139,6 +139,7 @@ public class App {
                 else {
 
                 listaVendas.add(venda);
+                listaVendas.sort(Comparator.comparing(s -> s .getDataDaVenda()));
                 produto.setQtdEstoque(produto.getQtdEstoque() - qtdVenda);
                 System.out.println("\n **Venda Realizada** \n");
         }
