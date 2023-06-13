@@ -112,21 +112,18 @@ public class App {
             
 
             for (Venda venda : listaVendas) {
-                if(venda.getDataDaVenda().isAfter(primeiraData) && venda.getDataDaVenda().isBefore(segundaData));{
-                    System.out.println(venda);
-                    valorTotal = venda.getProdutoVendido().getValor() * venda.getqtdVendida();
-                    valorMedio += valorTotal;
-                    quantidadeVendas++;
-                    System.out.println("- Valor total da venda: " + valorTotal);
-                }   
-            }
-
-            double mediaVendas = valorMedio / quantidadeVendas;
-
-            System.out.println("\n- Valor médio das vendas: " + mediaVendas);
+            if(venda.getDataDaVenda().compareTo(primeiraData) >= 0 && venda.getDataDaVenda().compareTo(segundaData) < 1){
+            System.out.println(venda);
+            valorTotal += venda.getProdutoVendido().getValor() * venda.getqtdVendida();
+            valorMedio += valorTotal;
+            quantidadeVendas++;
+            System.out.println("- Valor total da venda: " + valorTotal);
             
-        }
-          
+         }
+    }
+        double mediaVendas = valorTotal / quantidadeVendas;
+        System.out.println("\n- Valor médio das vendas: " + mediaVendas);
+    }         
 
         else if(opcao==5){
             System.out.println("\n** -|Realizar vendas|- **\n");
