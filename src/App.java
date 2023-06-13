@@ -121,7 +121,7 @@ public class App {
             
          }
     }
-        double mediaVendas = valorTotal / quantidadeVendas;
+        double mediaVendas = valorMedio / quantidadeVendas;
         System.out.println("\n- Valor médio das vendas: " + mediaVendas);
     }         
 
